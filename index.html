@@ -3,78 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Salajees Hardware</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <title>Salajees Hardware Home + Lifestyle Centre</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4fdf4;
+      margin: 0;
+      padding: 0;
+      background-color: #f0fdf6;
       color: #333;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    .wrapper {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
     header {
-      background-color: #0066cc;
+      background-color: #0a539e;
       color: white;
       padding: 20px;
       text-align: center;
-      position: relative;
     }
 
     header img {
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      height: 60px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
+      max-height: 80px;
+      display: block;
+      margin: 0 auto 10px;
     }
 
     nav {
       text-align: center;
-      background-color: #009966;
+      background-color: #1072ba;
       padding: 10px 0;
-      flex-wrap: wrap;
     }
 
     nav a {
-      margin: 5px 10px;
+      margin: 0 15px;
       padding: 10px 20px;
-      background-color: #00794c;
+      background-color: #1d8cd1;
       color: white;
       text-decoration: none;
       border-radius: 5px;
-      display: inline-block;
     }
 
     nav a:hover {
-      background-color: #005f3a;
+      background-color: #0a539e;
     }
 
     main {
-      padding: 20px;
       flex: 1;
+      padding: 20px;
     }
 
     section {
@@ -83,7 +59,7 @@
     }
 
     h2 {
-      color: #0066cc;
+      color: #0a539e;
     }
 
     .section-title {
@@ -92,129 +68,123 @@
     }
 
     footer {
-      background-color: #0066cc;
+      background-color: #0a539e;
       color: white;
       text-align: center;
-      padding: 10px;
+      padding: 15px;
+      margin-top: auto;
     }
 
     .social-icons a {
-      color: white;
       margin: 0 10px;
+      color: white;
       text-decoration: none;
-      font-size: 1.2rem;
     }
 
-    form {
-      max-width: 600px;
-      margin: 20px 0;
-    }
-
-    input, textarea {
+    .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #009966;
+    .contact-form button {
+      background-color: #0a539e;
       color: white;
       border: none;
-      border-radius: 5px;
+      padding: 10px 20px;
       cursor: pointer;
+      border-radius: 5px;
     }
 
-    button:hover {
-      background-color: #00794c;
+    .map-container {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
     }
 
     iframe {
       width: 100%;
-      height: 300px;
-      border: 0;
-      margin-top: 20px;
-      border-radius: 10px;
+      height: 100%;
+      border: none;
     }
 
-    @media (max-width: 600px) {
-      header img {
-        position: static;
-        display: block;
-        margin: 0 auto 10px auto;
-      }
-
+    @media (max-width: 768px) {
       nav a {
         display: block;
-        margin: 8px auto;
+        margin: 10px auto;
+        width: 80%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <img src="logo.png" alt="Salajees Logo" />
-      <h1>Salajees Hardware Home + Lifestyle Centre</h1>
-    </header>
 
-    <nav>
-      <a id="homeLink" onclick="showPage('home')">Home</a>
-      <a id="aboutLink" onclick="showPage('about')">About</a>
-      <a id="servicesLink" onclick="showPage('services')">Services</a>
-      <a id="contactLink" onclick="showPage('contact')">Contact</a>
-    </nav>
+  <header>
+    <img src="logo.png" alt="Salajees Hardware Logo" />
+    <h1>Salajees Hardware Home + Lifestyle Centre</h1>
+  </header>
 
-    <main>
-      <section id="home">
-        <h2 class="section-title">Welcome to Salajees Hardware</h2>
-        <p>Your trusted home and lifestyle centre located in the heart of Amanzimtoti. Visit us for all your hardware and lifestyle needs!</p>
-      </section>
+  <nav>
+    <a id="homeLink" onclick="showPage('home')">Home</a>
+    <a id="aboutLink" onclick="showPage('about')">About</a>
+    <a id="servicesLink" onclick="showPage('services')">Services</a>
+    <a id="contactLink" onclick="showPage('contact')">Contact</a>
+  </nav>
 
-      <section id="about">
-        <h2 class="section-title">About Us</h2>
-        <p>Salajees Hardware Home + Lifestyle Centre has proudly served the Amanzimtoti and Durban communities for years. We’re dedicated to offering quality products and friendly service to help you build, improve, and enjoy your home.</p>
-      </section>
+  <main>
+    <section id="home">
+      <h2 class="section-title">Welcome to Salajees Hardware</h2>
+      <p>Your trusted partner in home and lifestyle solutions. Visit us at the old Hub building, Amanzimtoti.</p>
+    </section>
 
-      <section id="services">
-        <h2 class="section-title">Our Services</h2>
-        <p>We provide a wide range of hardware and home lifestyle products, including tools, paints, gardening supplies, and home improvement essentials. Visit our store for expert advice and excellent prices.</p>
-      </section>
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <p>Located in Amanzimtoti, Durban, we are your one-stop destination for all hardware and home lifestyle needs. We pride ourselves on quality products and exceptional service.</p>
+    </section>
 
-      <section id="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
-        <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
+    <section id="services">
+      <h2 class="section-title">Our Services</h2>
+      <ul>
+        <li>Hardware and DIY Supplies</li>
+        <li>Home Decor & Lifestyle Products</li>
+        <li>Paint Mixing and Tinting</li>
+        <li>Expert Advice and Friendly Support</li>
+      </ul>
+    </section>
 
-        <h3>Send us a message</h3>
-        <form onsubmit="submitForm(event)">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit">Submit</button>
-        </form>
+    <section id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
+      <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
 
-        <h3>Find Us on the Map</h3>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">Facebook</a> |
+        <a href="#" aria-label="Instagram">Instagram</a> |
+        <a href="#" aria-label="Twitter">Twitter</a>
+      </div>
+
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+
+      <h3>Find Us on the Map</h3>
+      <div class="map-container">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.486348742756!2d30.88730621511587!3d-30.052582043248105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7075c7b2f6ab7%3A0xe4f50ec163dfae35!2sThe%20Hub%2C%20Commercial%20Rd%2C%20Amanzimtoti%2C%204126!5e0!3m2!1sen!2sza!4v1714968251373!5m2!1sen!2sza"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+          src="https://www.google.com/maps?q=-30.058210685693012,30.87986926527639&z=16&output=embed"
+          allowfullscreen
+          loading="lazy">
         </iframe>
-      </section>
-    </main>
-  </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/27319038121" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    </div>
     <p>&copy; 2025 Salajees Hardware. All Rights Reserved.</p>
   </footer>
 
@@ -252,13 +222,9 @@
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    function submitForm(event) {
-      event.preventDefault();
-      alert('Thank you! Your message has been received.');
-      event.target.reset();
-    }
-
+    // Default page on load
     showPage('home');
   </script>
+
 </body>
 </html>
