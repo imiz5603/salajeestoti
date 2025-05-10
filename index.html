@@ -6,9 +6,9 @@
   <title>Salajees Hardware Home + Lifestyle Centre</title>
   <style>
     :root {
-      --primary: #1f2937; /* Dark navy */
-      --secondary: #4b5563; /* Medium gray */
-      --accent: #70d37c; /* Green accent */
+      --primary: #1f2937;
+      --secondary: #4b5563;
+      --accent: #70d37c;
       --light: #f9f9f9;
       --text: #333;
     }
@@ -35,11 +35,38 @@
       color: white;
       padding: 30px 0 20px;
       text-align: center;
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header.shrink {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     header img {
       max-height: 70px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    header.shrink img {
+      max-height: 40px;
+      margin: 0 20px 0 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      transition: opacity 0.3s ease;
+    }
+
+    header.shrink h1 {
+      display: none;
     }
 
     nav {
@@ -57,6 +84,7 @@
       padding: 15px 0;
       font-weight: 500;
       position: relative;
+      cursor: pointer;
       transition: color 0.2s;
     }
 
@@ -137,6 +165,7 @@
       color: white;
       text-align: center;
       padding: 20px 10px;
+      margin-top: auto;
     }
 
     .social-icons {
@@ -155,14 +184,23 @@
         flex-direction: column;
         align-items: center;
       }
+
+      header.shrink {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header.shrink img {
+        margin: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <img src="logo.png" alt="Salajees Hardware Logo" />
+  <header id="mainHeader">
+    <div class="container header-flex">
+      <img id="headerLogo" src="logo.png" alt="Salajees Hardware Logo" />
       <h1>Salajees Hardware Home + Lifestyle Centre</h1>
     </div>
   </header>
@@ -242,6 +280,16 @@
 
     // Show Home page on load
     showPage('home');
+
+    // Shrink header on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 80) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
   </script>
 
 </body>
