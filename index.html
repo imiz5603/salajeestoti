@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Salajees Hardware Home + Lifestyle Centre</title>
   <style>
     body {
@@ -30,22 +30,35 @@
     }
 
     nav {
-      text-align: center;
+      display: flex;
+      justify-content: center;
       background-color: #1072ba;
-      padding: 10px 0;
     }
 
     nav a {
+      position: relative;
       margin: 0 15px;
-      padding: 10px 20px;
-      background-color: #1d8cd1;
+      padding: 15px 0;
       color: white;
       text-decoration: none;
-      border-radius: 5px;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
-      background-color: #0a539e;
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      left: 0;
+      bottom: 5px;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
     }
 
     main {
@@ -111,10 +124,13 @@
     }
 
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
       nav a {
-        display: block;
-        margin: 10px auto;
-        width: 80%;
+        margin: 10px 0;
       }
     }
   </style>
@@ -189,40 +205,18 @@
   </footer>
 
   <script>
-    const pageFlags = {
-      showHome: true,
-      showAbout: true,
-      showServices: true,
-      showContact: true,
-    };
-
     function showPage(pageId) {
       const sections = document.querySelectorAll('section');
       const links = document.querySelectorAll('nav a');
 
       sections.forEach(section => section.style.display = 'none');
+      document.getElementById(pageId).style.display = 'block';
 
-      if (pageFlags[`show${capitalizeFirstLetter(pageId)}`]) {
-        document.getElementById(pageId).style.display = 'block';
-      } else {
-        alert(`The ${pageId} page is currently unavailable.`);
-      }
-
-      links.forEach(link => {
-        const pageLinkId = link.id.replace('Link', '');
-        if (!pageFlags[`show${capitalizeFirstLetter(pageLinkId)}`]) {
-          link.style.display = 'none';
-        } else {
-          link.style.display = 'inline-block';
-        }
-      });
+      links.forEach(link => link.classList.remove('active'));
+      document.getElementById(`${pageId}Link`).classList.add('active');
     }
 
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
-    // Default page on load
+    // Default to show Home
     showPage('home');
   </script>
 
