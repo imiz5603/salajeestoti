@@ -5,54 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Salajees Hardware Home + Lifestyle Centre</title>
   <style>
+    :root {
+      --primary: #1f2937; /* Dark navy */
+      --secondary: #4b5563; /* Medium gray */
+      --accent: #70d37c; /* Green accent */
+      --light: #f9f9f9;
+      --text: #333;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: system-ui, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f0fdf6;
-      color: #333;
+      background-color: var(--light);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
     header {
-      background-color: #0a539e;
+      background-color: var(--primary);
       color: white;
-      padding: 20px;
+      padding: 30px 0 20px;
       text-align: center;
     }
 
     header img {
-      max-height: 80px;
-      display: block;
-      margin: 0 auto 10px;
+      max-height: 70px;
+      margin-bottom: 15px;
     }
 
     nav {
+      background-color: var(--primary);
       display: flex;
       justify-content: center;
-      background-color: #1072ba;
+      gap: 30px;
+      border-top: 1px solid #2f3c4e;
+      border-bottom: 1px solid #2f3c4e;
     }
 
     nav a {
-      position: relative;
-      margin: 0 15px;
-      padding: 15px 0;
       color: white;
       text-decoration: none;
+      padding: 15px 0;
       font-weight: 500;
-      transition: color 0.3s;
+      position: relative;
+      transition: color 0.2s;
     }
 
     nav a::after {
       content: "";
       position: absolute;
+      bottom: 5px;
+      left: 0;
       width: 0;
       height: 3px;
-      left: 0;
-      bottom: 5px;
-      background-color: #fff;
+      background-color: var(--accent);
       transition: width 0.3s ease;
     }
 
@@ -63,58 +78,52 @@
 
     main {
       flex: 1;
-      padding: 20px;
+      padding: 40px 0;
     }
 
     section {
-      margin-bottom: 40px;
       display: none;
+      margin-bottom: 60px;
     }
 
-    h2 {
-      color: #0a539e;
+    h2.section-title {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
     }
 
-    .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background-color: #0a539e;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: auto;
-    }
-
-    .social-icons a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .contact-form input, .contact-form textarea {
+    .contact-form input,
+    .contact-form textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font-size: 1rem;
     }
 
     .contact-form button {
-      background-color: #0a539e;
+      background-color: var(--accent);
       color: white;
       border: none;
-      padding: 10px 20px;
-      cursor: pointer;
+      padding: 12px 24px;
+      font-size: 1rem;
       border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #57b768;
     }
 
     .map-container {
       width: 100%;
       height: 400px;
       margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #ccc;
     }
 
     iframe {
@@ -123,14 +132,28 @@
       border: none;
     }
 
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: center;
-      }
-
-      nav a {
-        margin: 10px 0;
       }
     }
   </style>
@@ -138,8 +161,10 @@
 <body>
 
   <header>
-    <img src="logo.png" alt="Salajees Hardware Logo" />
-    <h1>Salajees Hardware Home + Lifestyle Centre</h1>
+    <div class="container">
+      <img src="logo.png" alt="Salajees Hardware Logo" />
+      <h1>Salajees Hardware Home + Lifestyle Centre</h1>
+    </div>
   </header>
 
   <nav>
@@ -149,24 +174,24 @@
     <a id="contactLink" onclick="showPage('contact')">Contact</a>
   </nav>
 
-  <main>
+  <main class="container">
     <section id="home">
       <h2 class="section-title">Welcome to Salajees Hardware</h2>
-      <p>Your trusted partner in home and lifestyle solutions. Visit us at the old Hub building, Amanzimtoti.</p>
+      <p>Your trusted partner in home and lifestyle solutions. Conveniently located in Amanzimtoti at the old Hub building.</p>
     </section>
 
     <section id="about">
       <h2 class="section-title">About Us</h2>
-      <p>Located in Amanzimtoti, Durban, we are your one-stop destination for all hardware and home lifestyle needs. We pride ourselves on quality products and exceptional service.</p>
+      <p>At Salajees Hardware, we provide a comprehensive range of tools, home goods, and lifestyle products. Serving the Amanzimtoti community with integrity and quality since our inception.</p>
     </section>
 
     <section id="services">
       <h2 class="section-title">Our Services</h2>
       <ul>
-        <li>Hardware and DIY Supplies</li>
-        <li>Home Decor & Lifestyle Products</li>
-        <li>Paint Mixing and Tinting</li>
-        <li>Expert Advice and Friendly Support</li>
+        <li>Premium Hardware Supplies</li>
+        <li>Home Improvement & Décor</li>
+        <li>Custom Paint Mixing</li>
+        <li>Friendly Expert Guidance</li>
       </ul>
     </section>
 
@@ -177,19 +202,18 @@
       <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
 
       <div class="social-icons">
-        <a href="#" aria-label="Facebook">Facebook</a> |
-        <a href="#" aria-label="Instagram">Instagram</a> |
-        <a href="#" aria-label="Twitter">Twitter</a>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
       </div>
 
       <form class="contact-form">
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Your Email" required />
         <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Submit</button>
+        <button type="submit">Send Message</button>
       </form>
 
-      <h3>Find Us on the Map</h3>
       <div class="map-container">
         <iframe 
           src="https://www.google.com/maps?q=-30.058210685693012,30.87986926527639&z=16&output=embed"
@@ -216,7 +240,7 @@
       document.getElementById(`${pageId}Link`).classList.add('active');
     }
 
-    // Default to show Home
+    // Show Home page on load
     showPage('home');
   </script>
 
