@@ -2,75 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Salajees Hardware Home + Lifestyle Centre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salajees Hardware Contact Page</title>
   <style>
     :root {
       --primary: #1f2937;
-      --secondary: #4b5563;
-      --accent: #70d37c;
-      --light: #f9f9f9;
-      --text: #333;
+      --accent: #6ee7b7;
     }
 
     body {
-      font-family: system-ui, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: var(--light);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
     }
 
     header {
-      background-color: var(--primary);
-      color: white;
-      transition: all 0.3s ease;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid #2f3c4e;
+      background-color: var(--primary);
+      color: white;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: background-color 0.3s ease;
     }
 
     .header-flex {
-      padding: 30px 0 20px;
-      text-align: center;
-    }
-
-    header.shrink .header-flex {
-      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    header img {
-      max-height: 100px;
-      margin-bottom: 10px;
+      padding: 10px 20px;
       transition: all 0.3s ease;
     }
 
-    header.shrink img {
-      max-height: 60px;
-      margin: 0;
+    header img {
+      height: 80px;
+      transition: transform 0.3s ease;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      transition: opacity 0.3s ease;
+      font-size: 1.5rem;
+      margin-left: 15px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    header.shrink img {
+      transform: scale(0.75);
     }
 
     header.shrink h1 {
-      display: none;
+      transform: scale(0.8);
+      opacity: 0.7;
     }
 
     nav {
@@ -78,232 +62,128 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      border-top: none;
-      border-bottom: 1px solid #2f3c4e;
+      padding-bottom: 10px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      padding: 15px 0;
-      font-weight: 500;
-      position: relative;
-      cursor: pointer;
-      transition: color 0.2s;
+      font-weight: bold;
+      padding: 10px;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      cursor: pointer;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background-color: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
+      color: var(--accent);
     }
 
     main {
-      flex: 1;
-      padding: 40px 0;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    section {
-      display: none;
-      margin-bottom: 60px;
-      scroll-margin-top: 130px;
+    h2 {
+      color: #1f2937;
     }
 
-    h2.section-title {
-      font-size: 2rem;
-      color: var(--primary);
+    .contact-info {
+      margin-bottom: 30px;
+    }
+
+    .contact-info p {
+      margin: 6px 0;
+    }
+
+    .social-links {
       margin-bottom: 20px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
+    .social-links a {
+      margin-right: 15px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    form input,
+    form textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 4px;
       font-size: 1rem;
     }
 
-    .contact-form button {
+    form textarea {
+      height: 120px;
+    }
+
+    form button {
       background-color: var(--accent);
       color: white;
       border: none;
-      padding: 12px 24px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
       font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
-    .contact-form button:hover {
-      background-color: #57b768;
-    }
-
-    .map-container {
-      width: 100%;
-      height: 400px;
-      margin-top: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #ccc;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    footer {
-      background-color: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: auto;
-    }
-
-    .social-icons {
-      margin: 20px 0;
-    }
-
-    .social-icons a {
-      margin: 0 10px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      header.shrink .header-flex {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      header.shrink img {
-        margin: 0;
-      }
+    form button:hover {
+      background-color: #34d399;
     }
   </style>
 </head>
 <body>
-
   <header id="mainHeader">
-    <div class="container header-flex">
-      <img id="headerLogo" src="logo.png" alt="Salajees Hardware Logo" />
-      <h1>Salajees Hardware Home + Lifestyle Centre</h1>
+    <div class="header-flex">
+      <div style="display: flex; align-items: center;">
+        <img src="your-logo-url.png" alt="Salajees Logo" />
+        <h1>Salajees Hardware Home + Lifestyle Centre</h1>
+      </div>
     </div>
     <nav>
-      <a id="homeLink" onclick="showPage('home')">Home</a>
-      <a id="aboutLink" onclick="showPage('about')">About</a>
-      <a id="servicesLink" onclick="showPage('services')">Services</a>
-      <a id="contactLink" onclick="showPage('contact')">Contact</a>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
     </nav>
   </header>
 
-  <main class="container">
-    <section id="home">
-      <h2 class="section-title">Welcome to Salajees Hardware</h2>
-      <p>Your trusted partner in home and lifestyle solutions. Conveniently located in Amanzimtoti at the old Hub building.</p>
-    </section>
-
-    <section id="about">
-      <h2 class="section-title">About Us</h2>
-      <p>At Salajees Hardware, we provide a comprehensive range of tools, home goods, and lifestyle products. Serving the Amanzimtoti community with integrity and quality since our inception.</p>
-    </section>
-
-    <section id="services">
-      <h2 class="section-title">Our Services</h2>
-      <ul>
-        <li>Premium Hardware Supplies</li>
-        <li>Home Improvement & Décor</li>
-        <li>Custom Paint Mixing</li>
-        <li>Friendly Expert Guidance</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2 class="section-title">Contact Us</h2>
+  <main>
+    <h2>Contact Us</h2>
+    <div class="contact-info">
       <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
       <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
+      <p><strong>Phone:</strong> <a href="tel:0319038121">031 903 8121</a></p>
+    </div>
 
-      <div class="social-icons">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-      </div>
+    <div class="social-links">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+    </div>
 
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-
-      <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps?q=-30.058210685693012,30.87986926527639&z=16&output=embed"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
-    </section>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Salajees Hardware. All Rights Reserved.</p>
-  </footer>
-
   <script>
-    function showPage(pageId) {
-      const sections = document.querySelectorAll('section');
-      const links = document.querySelectorAll('nav a');
-
-      sections.forEach(section => section.style.display = 'none');
-      document.getElementById(pageId).style.display = 'block';
-
-      links.forEach(link => link.classList.remove('active'));
-      document.getElementById(`${pageId}Link`).classList.add('active');
-    }
-
-    // Show Home page on load
-    showPage('home');
-
-    // Shrink header on scroll
     window.addEventListener('scroll', () => {
       const header = document.getElementById('mainHeader');
-      if (window.scrollY > 80) {
+      const shrinkPoint = 80;
+
+      if (window.scrollY > shrinkPoint) {
         header.classList.add('shrink');
       } else {
         header.classList.remove('shrink');
       }
     });
   </script>
-
 </body>
 </html>
