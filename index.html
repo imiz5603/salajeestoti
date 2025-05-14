@@ -10,8 +10,13 @@
       --accent: #6ee7b7;
     }
 
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
     }
@@ -22,47 +27,50 @@
       z-index: 1000;
       background-color: var(--primary);
       color: white;
-      height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      transition: background-color 0.3s ease;
-    }
-
-    .header-flex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
       transition: all 0.3s ease;
     }
 
-    header img {
-      height: 80px;
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .branding {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .branding img {
+      height: 60px;
       transition: transform 0.3s ease;
     }
 
-    header h1 {
-      font-size: 1.5rem;
-      margin-left: 15px;
+    .branding h1 {
+      font-size: 1.3rem;
       transition: transform 0.3s ease, opacity 0.3s ease;
+      white-space: nowrap;
     }
 
-    header.shrink img {
-      transform: scale(0.75);
-    }
-
-    header.shrink h1 {
+    header.shrink .branding img {
       transform: scale(0.8);
-      opacity: 0.7;
+    }
+
+    header.shrink .branding h1 {
+      transform: scale(0.85);
+      opacity: 0.8;
     }
 
     nav {
-      background-color: var(--primary);
       display: flex;
       justify-content: center;
+      background-color: var(--primary);
       gap: 30px;
-      padding-bottom: 10px;
+      padding: 10px 0;
     }
 
     nav a {
@@ -70,10 +78,13 @@
       text-decoration: none;
       font-weight: bold;
       padding: 10px;
-      transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
+      border-bottom: 2px solid var(--accent);
       color: var(--accent);
     }
 
@@ -110,7 +121,6 @@
       width: 100%;
       padding: 10px;
       margin: 8px 0;
-      box-sizing: border-box;
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 1rem;
@@ -137,17 +147,17 @@
 </head>
 <body>
   <header id="mainHeader">
-    <div class="header-flex">
-      <div style="display: flex; align-items: center;">
+    <div class="header-inner">
+      <div class="branding">
         <img src="your-logo-url.png" alt="Salajees Logo" />
         <h1>Salajees Hardware Home + Lifestyle Centre</h1>
       </div>
     </div>
     <nav>
       <a href="#">Home</a>
-      <a href="#">Products</a>
+      <a href="#">About</a>
       <a href="#">Services</a>
-      <a href="#">Contact</a>
+      <a href="#" class="active">Contact</a>
     </nav>
   </header>
 
@@ -174,11 +184,10 @@
   </main>
 
   <script>
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('mainHeader');
-      const shrinkPoint = 80;
+    const header = document.getElementById('mainHeader');
 
-      if (window.scrollY > shrinkPoint) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 70) {
         header.classList.add('shrink');
       } else {
         header.classList.remove('shrink');
