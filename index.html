@@ -33,8 +33,6 @@
     header {
       background-color: var(--primary);
       color: white;
-      padding: 30px 0 20px;
-      text-align: center;
       transition: all 0.3s ease;
       position: sticky;
       top: 0;
@@ -42,7 +40,12 @@
       border-bottom: 1px solid #2f3c4e;
     }
 
-    header.shrink {
+    .header-flex {
+      padding: 30px 0 20px;
+      text-align: center;
+    }
+
+    header.shrink .header-flex {
       padding: 10px 20px;
       display: flex;
       align-items: center;
@@ -77,9 +80,6 @@
       gap: 30px;
       border-top: none;
       border-bottom: 1px solid #2f3c4e;
-      position: sticky;
-      top: 0;
-      z-index: 999;
     }
 
     nav a {
@@ -88,8 +88,12 @@
       padding: 15px 0;
       font-weight: 500;
       position: relative;
-      cursor: pointer; 
+      cursor: pointer;
       transition: color 0.2s;
+    }
+
+    nav a:hover {
+      cursor: pointer;
     }
 
     nav a::after {
@@ -182,6 +186,7 @@
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
+      cursor: pointer;
     }
 
     html {
@@ -194,7 +199,7 @@
         align-items: center;
       }
 
-      header.shrink {
+      header.shrink .header-flex {
         flex-direction: column;
         align-items: center;
       }
@@ -212,14 +217,13 @@
       <img id="headerLogo" src="logo.png" alt="Salajees Hardware Logo" />
       <h1>Salajees Hardware Home + Lifestyle Centre</h1>
     </div>
+    <nav>
+      <a id="homeLink" onclick="showPage('home')">Home</a>
+      <a id="aboutLink" onclick="showPage('about')">About</a>
+      <a id="servicesLink" onclick="showPage('services')">Services</a>
+      <a id="contactLink" onclick="showPage('contact')">Contact</a>
+    </nav>
   </header>
-
-  <nav>
-    <a id="homeLink" onclick="showPage('home')">Home</a>
-    <a id="aboutLink" onclick="showPage('about')">About</a>
-    <a id="servicesLink" onclick="showPage('services')">Services</a>
-    <a id="contactLink" onclick="showPage('contact')">Contact</a>
-  </nav>
 
   <main class="container">
     <section id="home">
