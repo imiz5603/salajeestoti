@@ -1,119 +1,76 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Salajees Hardware Home + Lifestyle Centre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salajees Hardware</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <style>
-    :root {
-      --primary: #1f2937;
-      --secondary: #4b5563;
-      --accent: #70d37c;
-      --light: #f9f9f9;
-      --text: #333;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: system-ui, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--light);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
     }
 
     header {
-      background-color: var(--primary);
+      background-color: #1f2735;
       color: white;
-      transition: all 0.3s ease;
+      padding: 10px 20px;
       position: sticky;
       top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #2f3c4e;
-
-
-
-
-
-
+      z-index: 999;
     }
 
-    .header-flex {
-      padding: 30px 0 20px;
-      text-align: center;
-    }
-
-    header.shrink .header-flex {
-      padding: 10px 20px;
+    .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    header img {
-      max-height: 100px;
-      margin-bottom: 10px;
-      transition: all 0.3s ease;
+    .branding {
+      display: flex;
+      align-items: center;
     }
 
-    header.shrink img {
-      max-height: 60px;
-      margin: 0;
-
+    .branding img {
+      height: 50px;
+      margin-right: 10px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      transition: opacity 0.3s ease;
-    }
-
-    header.shrink h1 {
-      display: none;
-
+    .branding-text {
+      font-size: 1.1rem;
+      font-weight: bold;
+      white-space: nowrap;
     }
 
     nav {
-      background-color: var(--primary);
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      border-top: none;
-      border-bottom: 1px solid #2f3c4e;
+      gap: 20px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      padding: 15px 0;
-      font-weight: 500;
+      font-weight: bold;
       position: relative;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      cursor: pointer;
     }
 
     nav a::after {
-      content: "";
-      position: absolute;
-      bottom: 5px;
-      left: 0;
+      content: '';
+      display: block;
+      height: 2px;
+      background-color: #4af69f;
       width: 0;
-      height: 3px;
-      background-color: var(--accent);
-      transition: width 0.3s ease;
+      transition: width 0.3s;
+      margin-top: 5px;
     }
 
     nav a:hover::after,
@@ -122,208 +79,147 @@
     }
 
     main {
-      flex: 1;
-      padding: 40px 0;
-
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    section {
-      display: none;
-      margin-bottom: 60px;
-      scroll-margin-top: 130px;
+    .intro-section {
+      text-align: center;
+      margin-bottom: 40px;
     }
 
-    h2.section-title {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 20px;
+    .intro-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #1f2735;
     }
 
-    .contact-form input,
-    .contact-form textarea {
+    .intro-section p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    form input,
+    form textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
+      padding: 10px;
+      margin: 10px 0;
     }
 
-    .contact-form button {
-      background-color: var(--accent);
-      color: white;
+    form button {
+      background-color: #4af69f;
       border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 5px;
+      padding: 10px 20px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-weight: bold;
     }
 
-    .contact-form button:hover {
-      background-color: #57b768;
-
-
-    }
-
-    .map-container {
-
+    .swiper {
       width: 100%;
-      height: 400px;
-      margin-top: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #ccc;
+      max-width: 500px;
+      margin: 40px auto;
+    }
 
-
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
     }
 
     iframe {
-      width: 100%;
-      height: 100%;
       border: none;
-    }
-
-    footer {
-      background-color: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: auto;
-    }
-
-    .social-icons {
-      margin: 20px 0;
-    }
-
-    .social-icons a {
-      margin: 0 10px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-
-    }
-
-    html {
-      scroll-behavior: smooth;
+      width: 100%;
+      height: 600px;
     }
 
     @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       nav {
         flex-direction: column;
-        align-items: center;
-      }
-
-      header.shrink .header-flex {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      header.shrink img {
-        margin: 0;
+        width: 100%;
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <header id="mainHeader">
-    <div class="container header-flex">
-      <img id="headerLogo" src="logo.png" alt="Salajees Hardware Logo" />
-      <h1>Salajees Hardware Home + Lifestyle Centre</h1>
-
-
+<header>
+  <div class="nav-container">
+    <div class="branding">
+      <img src="images/logo.png" alt="Salajees Logo" />
+      <div class="branding-text">Salajees Hardware Home + Lifestyle Centre</div>
     </div>
     <nav>
-      <a id="homeLink" onclick="showPage('home')">Home</a>
-      <a id="aboutLink" onclick="showPage('about')">About</a>
-      <a id="servicesLink" onclick="showPage('services')">Services</a>
-      <a id="contactLink" onclick="showPage('contact')">Contact</a>
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
-    <section id="home">
-      <h2 class="section-title">Welcome to Salajees Hardware</h2>
-      <p>Your trusted partner in home and lifestyle solutions. Conveniently located in Amanzimtoti at the old Hub building.</p>
-    </section>
+<main>
+  <section id="home" class="intro-section">
+    <h2>Meet our resident viral star: Eb Salajee</h2>
+    <p>See his videos where he gives practical hardware advice and hacks you can use every day.</p>
+  </section>
 
-    <section id="about">
-      <h2 class="section-title">About Us</h2>
-      <p>At Salajees Hardware, we provide a comprehensive range of tools, home goods, and lifestyle products. Serving the Amanzimtoti community with integrity and quality since our inception.</p>
-    </section>
-
-    <section id="services">
-      <h2 class="section-title">Our Services</h2>
-      <ul>
-        <li>Premium Hardware Supplies</li>
-        <li>Home Improvement & Décor</li>
-        <li>Custom Paint Mixing</li>
-        <li>Friendly Expert Guidance</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2 class="section-title">Contact Us</h2>
-      <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
-      <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
-
-      <div class="social-icons">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
+  <section class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7281274109156248837" allowfullscreen></iframe>
       </div>
-
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-
-      <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps?q=-30.058210685693012,30.87986926527639&z=16&output=embed"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7491949596344651063" allowfullscreen></iframe>
       </div>
-    </section>
-  </main>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7477607572296453381" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7479030567296666886" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7447958157092998405" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Salajees Hardware. All Rights Reserved.</p>
-  </footer>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
+    <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
 
-  <script>
-    function showPage(pageId) {
-      const sections = document.querySelectorAll('section');
-      const links = document.querySelectorAll('nav a');
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="6" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
 
-      sections.forEach(section => section.style.display = 'none');
-      document.getElementById(pageId).style.display = 'block';
-
-      links.forEach(link => link.classList.remove('active'));
-      document.getElementById(`${pageId}Link`).classList.add('active');
-    }
-
-    // Show Home page on load
-    showPage('home');
-
-    // Shrink header on scroll
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('mainHeader');
-      if (window.scrollY > 80) {
-
-
-        header.classList.add('shrink');
-      } else {
-        header.classList.remove('shrink');
-      }
-    });
-  </script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
 
 </body>
 </html>
