@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salajees Hardware</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <style>
     * {
       box-sizing: border-box;
@@ -98,6 +99,23 @@
       font-weight: bold;
     }
 
+    .swiper {
+      width: 100%;
+      max-width: 500px;
+      margin: 40px auto;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 600px;
+    }
+
     @media (max-width: 768px) {
       .nav-container {
         flex-direction: column;
@@ -130,6 +148,29 @@
 </header>
 
 <main>
+  <section class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7281274109156248837" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7491949596344651063" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7477607572296453381" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7479030567296666886" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe src="https://www.tiktok.com/embed/7447958157092998405" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </section>
+
   <section id="contact">
     <h2>Contact Us</h2>
     <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
@@ -144,6 +185,20 @@
     </form>
   </section>
 </main>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
 
 </body>
 </html>
