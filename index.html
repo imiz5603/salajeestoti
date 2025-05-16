@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Salajees Hardware - Home and Lifestyle Centre in Amanzimtoti. Premium hardware, décor, and expert advice.">
   <title>Salajees Hardware Home + Lifestyle Centre</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
       --primary: #1f2937;
@@ -37,12 +40,6 @@
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid #2f3c4e;
-
-
-
-
-
-
     }
 
     .header-flex {
@@ -55,20 +52,18 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-
+      flex-direction: row;
     }
 
     header img {
       max-height: 100px;
       margin-bottom: 10px;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease-in-out;
     }
 
     header.shrink img {
       max-height: 60px;
       margin: 0;
-
     }
 
     header h1 {
@@ -79,7 +74,6 @@
 
     header.shrink h1 {
       display: none;
-
     }
 
     nav {
@@ -87,8 +81,8 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      border-top: none;
       border-bottom: 1px solid #2f3c4e;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -101,8 +95,9 @@
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      cursor: pointer;
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
     }
 
     nav a::after {
@@ -116,21 +111,29 @@
       transition: width 0.3s ease;
     }
 
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
+    nav a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     main {
       flex: 1;
       padding: 40px 0;
-
     }
 
     section {
       display: none;
       margin-bottom: 60px;
       scroll-margin-top: 130px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2.section-title {
@@ -162,20 +165,15 @@
 
     .contact-form button:hover {
       background-color: #57b768;
-
-
     }
 
     .map-container {
-
       width: 100%;
       height: 400px;
       margin-top: 20px;
       border-radius: 10px;
       overflow: hidden;
       border: 1px solid #ccc;
-
-
     }
 
     iframe {
@@ -202,7 +200,6 @@
       text-decoration: none;
       font-weight: 500;
       cursor: pointer;
-
     }
 
     html {
@@ -227,15 +224,12 @@
   </style>
 </head>
 <body>
-
-  <header id="mainHeader">
+  <header id="mainHeader" role="banner">
     <div class="container header-flex">
-      <img id="headerLogo" src="logo.png" alt="Salajees Hardware Logo" />
+      <img id="headerLogo" src="logo.webp" alt="Salajees Hardware company logo" />
       <h1>Salajees Hardware Home + Lifestyle Centre</h1>
-
-
     </div>
-    <nav>
+    <nav role="navigation">
       <a id="homeLink" onclick="showPage('home')">Home</a>
       <a id="aboutLink" onclick="showPage('about')">About</a>
       <a id="servicesLink" onclick="showPage('services')">Services</a>
@@ -243,7 +237,7 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main class="container" role="main">
     <section id="home">
       <h2 class="section-title">Welcome to Salajees Hardware</h2>
       <p>Your trusted partner in home and lifestyle solutions. Conveniently located in Amanzimtoti at the old Hub building.</p>
@@ -266,9 +260,11 @@
 
     <section id="contact">
       <h2 class="section-title">Contact Us</h2>
-      <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
-      <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
+      <div class="contact-info">
+        <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
+        <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
+      </div>
 
       <div class="social-icons">
         <a href="#">Facebook</a>
@@ -293,17 +289,23 @@
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Salajees Hardware. All Rights Reserved.</p>
+  <footer role="contentinfo">
+    <p>&copy; <span id="year"></span> Salajees Hardware. All Rights Reserved.</p>
   </footer>
 
-  <script>
+  <script defer>
     function showPage(pageId) {
       const sections = document.querySelectorAll('section');
       const links = document.querySelectorAll('nav a');
 
-      sections.forEach(section => section.style.display = 'none');
-      document.getElementById(pageId).style.display = 'block';
+      sections.forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none';
+      });
+
+      const target = document.getElementById(pageId);
+      target.style.display = 'block';
+      setTimeout(() => target.classList.add('active'), 10);
 
       links.forEach(link => link.classList.remove('active'));
       document.getElementById(`${pageId}Link`).classList.add('active');
@@ -316,14 +318,20 @@
     window.addEventListener('scroll', () => {
       const header = document.getElementById('mainHeader');
       if (window.scrollY > 80) {
-
-
         header.classList.add('shrink');
       } else {
         header.classList.remove('shrink');
       }
     });
-  </script>
 
+    // Handle contact form submission
+    document.querySelector('.contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Your message has been sent!');
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
