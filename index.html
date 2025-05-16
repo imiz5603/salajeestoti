@@ -165,4 +165,150 @@
 
     iframe {
       width: 100%;
-      height: 100
+      height: 100%;
+      border: none;
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      flex-shrink: 0;
+      border-top: 1px solid #2f3c4e;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #contact {
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header.shrink .header-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header.shrink img {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="mainHeader">
+    <div class="container header-flex">
+      <img id="headerLogo" src="logo.png" alt="Salajees Hardware Logo" />
+      <h1>Salajees Hardware Home + Lifestyle Centre</h1>
+    </div>
+    <nav>
+      <a id="homeLink" onclick="showPage('home')">Home</a>
+      <a id="aboutLink" onclick="showPage('about')">About</a>
+      <a id="servicesLink" onclick="showPage('services')">Services</a>
+      <a id="contactLink" onclick="showPage('contact')">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="home">
+      <h2 class="section-title">Welcome to Salajees Hardware</h2>
+      <p>Your trusted partner in home and lifestyle solutions. Conveniently located in Amanzimtoti at the old Hub building.</p>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <p>At Salajees Hardware, we provide a comprehensive range of tools, home goods, and lifestyle products. Serving the Amanzimtoti community with integrity and quality since our inception.</p>
+    </section>
+
+    <section id="services">
+      <h2 class="section-title">Our Services</h2>
+      <ul>
+        <li>Premium Hardware Supplies</li>
+        <li>Home Improvement & Décor</li>
+        <li>Custom Paint Mixing</li>
+        <li>Friendly Expert Guidance</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
+      <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
+
+      <div class="social-icons">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps?q=-30.058210685693012,30.87986926527639&z=16&output=embed"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Salajees Hardware. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      const sections = document.querySelectorAll('section');
+      const links = document.querySelectorAll('nav a');
+
+      sections.forEach(section => section.style.display = 'none');
+      document.getElementById(pageId).style.display = 'block';
+
+      links.forEach(link => link.classList.remove('active'));
+      document.getElementById(`${pageId}Link`).classList.add('active');
+    }
+
+    // Show Home page on load
+    showPage('home');
+
+    // Shrink header on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 80) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+  </script>
+
+</body>
+</html>
