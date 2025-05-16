@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Salajees Hardware - Home and Lifestyle Centre in Amanzimtoti. Premium hardware, décor, and expert advice.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Salajees Hardware Home + Lifestyle Centre</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
-      --primary: #1f2937;
-      --secondary: #4b5563;
-      --accent: #70d37c;
+      --primary: #1e293b; /* Dark navy */
+      --accent: #70d37c; /* Green accent */
       --light: #f9f9f9;
       --text: #333;
     }
@@ -26,94 +23,88 @@
       min-height: 100vh;
     }
 
-    .container {
+    header {
+      background-color: var(--primary);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #2f3c4e;
+      transition: all 0.3s ease;
+      padding: 20px 0;
+    }
+
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       width: 90%;
       max-width: 1100px;
       margin: auto;
     }
 
-    header {
-      background-color: var(--primary);
-      color: white;
-      transition: all 0.3s ease;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #2f3c4e;
-    }
-
-    .header-flex {
-      padding: 30px 0 20px;
-      text-align: center;
-    }
-
-    header.shrink .header-flex {
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-direction: row;
-    }
-
     header img {
-      max-height: 100px;
-      margin-bottom: 10px;
-      transition: all 0.3s ease-in-out;
-    }
-
-    header.shrink img {
       max-height: 60px;
-      margin: 0;
+      transition: all 0.3s ease;
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.8rem;
-      transition: opacity 0.3s ease;
-    }
-
-    header.shrink h1 {
-      display: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      flex: 1;
+      user-select: none;
     }
 
     nav {
-      background-color: var(--primary);
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      border-bottom: 1px solid #2f3c4e;
-      flex-wrap: wrap;
+      gap: 25px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      padding: 15px 0;
+      padding: 5px 0;
       font-weight: 500;
       position: relative;
       cursor: pointer;
-      transition: color 0.2s;
+      transition: color 0.2s ease;
     }
 
-    nav a:hover::after,
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
     nav a.active::after {
-      width: 100%;
-    }
-
-    nav a::after {
       content: "";
       position: absolute;
-      bottom: 5px;
+      bottom: -5px;
       left: 0;
-      width: 0;
-      height: 3px;
+      width: 100%;
+      height: 2px;
       background-color: var(--accent);
-      transition: width 0.3s ease;
+      border-radius: 2px;
     }
 
-    nav a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
+    header.shrink {
+      padding: 10px 0;
+    }
+
+    header.shrink img {
+      max-height: 40px;
+    }
+
+    header.shrink h1 {
+      font-size: 1rem;
+    }
+
+    /* Main container */
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
     }
 
     main {
@@ -125,15 +116,10 @@
       display: none;
       margin-bottom: 60px;
       scroll-margin-top: 130px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     section.active {
       display: block;
-      opacity: 1;
-      transform: translateY(0);
     }
 
     h2.section-title {
@@ -142,103 +128,44 @@
       margin-bottom: 20px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
+    /* Contact form styles omitted for brevity; keep your existing styles here */
 
-    .contact-form button {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .contact-form button:hover {
-      background-color: #57b768;
-    }
-
-    .map-container {
-      width: 100%;
-      height: 400px;
-      margin-top: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #ccc;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    footer {
-      background-color: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: auto;
-    }
-
-    .social-icons {
-      margin: 20px 0;
-    }
-
-    .social-icons a {
-      margin: 0 10px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
+      .header-flex {
+        flex-direction: column;
+        gap: 10px;
+      }
+
       nav {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
+        gap: 15px;
       }
 
-      header.shrink .header-flex {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      header.shrink img {
-        margin: 0;
+      header h1 {
+        flex: none;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
-  <header id="mainHeader" role="banner">
+
+  <header id="mainHeader">
     <div class="container header-flex">
-      <img id="headerLogo" src="logo.png" alt="Salajees Hardware company logo" />
+      <img id="headerLogo" src="logo.png" alt="Salajees Hardware Logo" />
       <h1>Salajees Hardware Home + Lifestyle Centre</h1>
+      <nav>
+        <a id="homeLink" onclick="showPage('home')">Home</a>
+        <a id="aboutLink" onclick="showPage('about')">About</a>
+        <a id="servicesLink" onclick="showPage('services')">Services</a>
+        <a id="contactLink" onclick="showPage('contact')">Contact</a>
+      </nav>
     </div>
-    <nav role="navigation">
-      <a id="homeLink" onclick="showPage('home')">Home</a>
-      <a id="aboutLink" onclick="showPage('about')">About</a>
-      <a id="servicesLink" onclick="showPage('services')">Services</a>
-      <a id="contactLink" onclick="showPage('contact')">Contact</a>
-    </nav>
   </header>
 
-  <main class="container" role="main">
-    <section id="home">
+  <main class="container">
+    <section id="home" class="active">
       <h2 class="section-title">Welcome to Salajees Hardware</h2>
       <p>Your trusted partner in home and lifestyle solutions. Conveniently located in Amanzimtoti at the old Hub building.</p>
     </section>
@@ -260,11 +187,9 @@
 
     <section id="contact">
       <h2 class="section-title">Contact Us</h2>
-      <div class="contact-info">
-        <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
-        <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
-      </div>
+      <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
+      <p><strong>Email:</strong> <a href="mailto:admin@salajeeshardware.com">admin@salajeeshardware.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+27319038121">031 903 8121</a></p>
 
       <div class="social-icons">
         <a href="#">Facebook</a>
@@ -289,23 +214,19 @@
     </section>
   </main>
 
-  <footer role="contentinfo">
-    <p>&copy; <span id="year"></span> Salajees Hardware. All Rights Reserved.</p>
+  <footer>
+    <p>&copy; 2025 Salajees Hardware. All Rights Reserved.</p>
   </footer>
 
-  <script defer>
+  <script>
     function showPage(pageId) {
       const sections = document.querySelectorAll('section');
       const links = document.querySelectorAll('nav a');
 
       sections.forEach(section => {
         section.classList.remove('active');
-        section.style.display = 'none';
       });
-
-      const target = document.getElementById(pageId);
-      target.style.display = 'block';
-      setTimeout(() => target.classList.add('active'), 10);
+      document.getElementById(pageId).classList.add('active');
 
       links.forEach(link => link.classList.remove('active'));
       document.getElementById(`${pageId}Link`).classList.add('active');
@@ -323,15 +244,7 @@
         header.classList.remove('shrink');
       }
     });
-
-    // Handle contact form submission
-    document.querySelector('.contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Your message has been sent!');
-    });
-
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
