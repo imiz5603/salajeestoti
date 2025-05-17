@@ -73,51 +73,6 @@
       display: flex;
       gap: 25px;
     }
-    #brands {
-  margin-top: 60px;
-  text-align: center;
-}
-
-.brand-carousel {
-  display: flex;
-  gap: 30px;
-  overflow: hidden;
-  padding: 20px 0;
-  animation: scrollBrands 20s linear infinite;
-}
-
-.brand-carousel a {
-  flex: 0 0 auto;
-  width: 20%;
-  max-width: 150px;
-}
-
-.brand-carousel img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-.brand-carousel img:hover {
-  filter: grayscale(0%);
-}
-
-@keyframes scrollBrands {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-@media (max-width: 768px) {
-  .brand-carousel {
-    gap: 15px;
-  }
-
-  .brand-carousel a {
-    width: 40%;
-  }
-}
 
     nav a {
       color: white;
@@ -456,8 +411,8 @@
       const sections = document.querySelectorAll('section');
       const links = document.querySelectorAll('nav a');
 
-      sections.forEach(section => section..display = 'none');
-      document.getElementById(pageId)..display = 'block';
+      sections.forEach(section => section.style.display = 'none');
+      document.getElementById(pageId).style.display = 'block';
 
       links.forEach(link => link.classList.remove('active'));
       document.getElementById(`${pageId}Link`).classList.add('active');
