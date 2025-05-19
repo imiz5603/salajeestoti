@@ -301,6 +301,52 @@
     .tiktok-slider button.next {
       right: 5px;
     }
+    #brands {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #f9f9f9;
+  }
+
+  .brand-carousel {
+    display: flex;
+    gap: 40px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    animation: scrollBrands 20s linear infinite;
+  }
+
+  .brand-carousel img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .brand-carousel img:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes scrollBrands {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .brand-carousel {
+      flex-wrap: wrap;
+      animation: none;
+    }
+
+    .brand-carousel img {
+      flex: 1 1 40%;
+      margin: 10px;
+    }
+  }
   </style>
 </head>
 <body>
@@ -341,6 +387,17 @@
         <button class="prev" aria-label="Previous video">&#10094;</button>
         <button class="next" aria-label="Next video">&#10095;</button>
       </div>
+      <section id="brands">
+  <h2 class="section-title">Brands We Stock</h2>
+  <div class="brand-carousel">
+    <img src="safeTop.png" alt="SafeTop Logo">
+    <img src="permoseal.png" alt="Permoseal Logo">
+    <img src="eurolux.png" alt="Eurolux Logo">
+    <img src="powafix.png" alt="Powafix Logo">
+    <img src="duram.png" alt="Duram Logo">
+    <img src="ingco.png" alt="Ingco Logo">
+  </div>
+</section>
       <div class="visit-us">
   <h3>Visit Us Today</h3>
    <p><strong>Address:</strong> 13/15/17 Commercial Road (The old Hub building), Amanzimtoti, Durban 4126</p>
