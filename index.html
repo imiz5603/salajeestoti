@@ -337,11 +337,15 @@
   width: 100%;
   padding: 20px 0; /* vertical padding for breathing room */
 }
-
+html, body {
+  overflow-x: hidden;
+}
 .brand-carousel {
   display: flex;
-  width: fit-content;
   animation: scrollBrands 40s linear infinite;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .brand-carousel img {
